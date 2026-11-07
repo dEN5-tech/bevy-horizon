@@ -1,0 +1,15 @@
+[package]
+name = "horizon-mod-pedestal-orbit"
+version = "0.1.0"
+edition = "2024"
+authors = ["Horizon Community"]
+description = "Reference Bevy ECS Mod: Pedestal Orbit with Sinusoidal Bobbing"
+license = "MIT"
+
+[lib]
+path = "mixins/pedestal_orbit/runtime.rs"
+
+[dependencies]
+bevy_ecs = { version = "0.20", default-features = false }
+bevy_horizon = { path = "../bevy_horizon" }
+pedestal_orbit_ecs = { path = "mixins/pedestal_orbit/ecs" }

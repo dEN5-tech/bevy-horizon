@@ -1,0 +1,12 @@
+[package]
+name = "horizon_bevy_gen"
+version = "0.1.0"
+edition = "2024"
+description = "AST-driven Bevy ECS type & bridge generator for Horizon native mods (inspired by rusty-ast)"
+
+[dependencies]
+syn = { version = "2.0", features = ["full", "extra-traits", "parsing"] }
+quote = "1.0"
+proc-macro2 = "1.0"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"

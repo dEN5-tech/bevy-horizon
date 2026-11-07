@@ -1,0 +1,7 @@
+{
+  "id": "pedestal_orbit",
+  "version": "0.1.0",
+  "name": "Pedestal Orbit",
+  "description": "Bevy ECS Reference Mod: Block pedestal anchor and sinusoidal orbiting entity.",
+  "authors": ["Horizon Community"]
+}
