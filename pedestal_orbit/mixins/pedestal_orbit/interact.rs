@@ -2,7 +2,7 @@ fn pedestal_orbit_interact_entity(
     game: &mut crate::game::Game<'_>,
     entity: i32,
     kind: &str,
-    _stack: Option<&horizon_client::items::ItemStack>,
+    stack: Option<&horizon_client::items::ItemStack>,
     claimed: &mut bool,
 ) {
     use crate::game::pedestal_orbit_runtime as m;
