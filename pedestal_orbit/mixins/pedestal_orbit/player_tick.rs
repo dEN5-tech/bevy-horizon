@@ -17,11 +17,11 @@ fn pedestal_orbit_player_tick(game: &mut crate::game::Game<'_>) {
     });
 
     let commands = m::host_bridge::step_simulation(
-        player.id,
+        0,
         [player.x, player.y, player.z],
         [player.yaw, player.pitch],
-        player.health,
-        player.max_health,
+        20.0,
+        20.0,
         live_mob,
     );
 
@@ -31,7 +31,9 @@ fn pedestal_orbit_player_tick(game: &mut crate::game::Game<'_>) {
                 let _ = game.native_teleport_mob(player.dimension, entity_id, pos);
             }
             m::OutboxCommand::PlaceBlock { pos, block_id, .. } => {
-                let _ = game.native_place_block(player.dimension, pos, &block_id);
+                game.native_flame_particle([pos[0] as f64 + 0.5, pos[1] as f64 + 1.2, pos[2] as f64 + 0.5], true);
+                let uuid = game.native_acting_id();
+                let _ = game.native_action_bar(uuid, horizon_client::text::Text::literal(&format!("[PedestalOrbit] Anchor placed at ({}, {}, {}) [{}]", pos[0], pos[1], pos[2], block_id)));
             }
             m::OutboxCommand::PushMob { entity_id, velocity, .. } => {
                 let _ = game.native_push_mob(player.dimension, entity_id, velocity);

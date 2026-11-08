@@ -32,8 +32,8 @@ fn pedestal_orbit_hud_draw(
     let text_w = game.native_text_width(&label);
     let box_w = text_w + 8.0;
     let box_h = 13.0;
-    let origin = corners.place(corner, box_w, box_h);
+    let (x, y) = corners.place(corner, box_w, box_h);
 
-    game.native_fill(batch, [origin[0], origin[1], origin[0] + box_w, origin[1] + box_h], 0x88000000);
-    game.native_text(batch, &label, [origin[0] + 4.0, origin[1] + 2.0], 0x00FFCC, true);
+    game.native_fill(batch, [x, y, box_w, box_h], 0x78000000);
+    game.native_text(batch, &label, [x + 4.0, y + 2.0], 0x00FFCC, true);
 }
