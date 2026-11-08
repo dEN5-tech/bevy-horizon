@@ -1,5 +1,5 @@
-//! Horizon Native Mod Runtime: Pedestal Orbit
-//! Powered by Bevy ECS via `pedestal_orbit_ecs` and `bevy_horizon`.
+// Horizon Native Mod Runtime: Pedestal Orbit
+// Powered by Bevy ECS via `pedestal_orbit_ecs`.
 
 pub use pedestal_orbit_ecs::*;
 
