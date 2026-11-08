@@ -27,20 +27,20 @@ fn pedestal_orbit_player_tick(game: &mut crate::game::Game<'_>) {
 
     for cmd in commands {
         match cmd {
-            bevy_horizon::prelude::OutboxCommand::TeleportMob { entity_id, pos, .. } => {
+            m::OutboxCommand::TeleportMob { entity_id, pos, .. } => {
                 let _ = game.native_teleport_mob(player.dimension, entity_id, pos);
             }
-            bevy_horizon::prelude::OutboxCommand::PlaceBlock { pos, block_id, .. } => {
+            m::OutboxCommand::PlaceBlock { pos, block_id, .. } => {
                 let _ = game.native_place_block(player.dimension, pos, &block_id);
             }
-            bevy_horizon::prelude::OutboxCommand::PushMob { entity_id, velocity, .. } => {
+            m::OutboxCommand::PushMob { entity_id, velocity, .. } => {
                 let _ = game.native_push_mob(player.dimension, entity_id, velocity);
             }
-            bevy_horizon::prelude::OutboxCommand::ActionBar { message } => {
+            m::OutboxCommand::ActionBar { message } => {
                 let uuid = game.native_acting_id();
                 let _ = game.native_action_bar(uuid, horizon_client::text::Text::literal(&message));
             }
-            bevy_horizon::prelude::OutboxCommand::Chat { message } => {
+            m::OutboxCommand::Chat { message } => {
                 game.native_chat(&message);
             }
         }

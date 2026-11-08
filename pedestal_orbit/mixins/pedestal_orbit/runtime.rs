@@ -134,7 +134,7 @@ pub mod host_bridge {
         player_hp: f32,
         player_max_hp: f32,
         live_mob: Option<([f64; 3], f32, f32)>,
-    ) -> Vec<bevy_horizon::prelude::OutboxCommand> {
+    ) -> Vec<OutboxCommand> {
         with_kernel(|kernel| {
             kernel.bridge.ingest_player(
                 player_id,
@@ -206,7 +206,7 @@ mod tests {
         assert!(!outbox.is_empty());
 
         let has_teleport = outbox.iter().any(|cmd| match cmd {
-            bevy_horizon::prelude::OutboxCommand::TeleportMob { entity_id, .. } => *entity_id == 55,
+            OutboxCommand::TeleportMob { entity_id, .. } => *entity_id == 55,
             _ => false,
         });
         assert!(has_teleport);

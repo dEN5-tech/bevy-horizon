@@ -381,7 +381,6 @@ name = "horizon-mod-pedestal-orbit"
 version = "0.1.0"
 dependencies = [
  "bevy_ecs",
- "bevy_horizon",
  "pedestal_orbit_ecs",
 ]
 
@@ -462,9 +461,6 @@ name = "pedestal_orbit_ecs"
 version = "0.1.0"
 dependencies = [
  "bevy_ecs",
- "bevy_horizon",
- "serde",
- "serde_json",
 ]
 
 [[package]]

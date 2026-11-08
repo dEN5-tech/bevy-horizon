@@ -11,5 +11,4 @@ path = "mixins/pedestal_orbit/runtime.rs"
 
 [dependencies]
 bevy_ecs = { version = "0.20", default-features = false }
-bevy_horizon = { path = "../bevy_horizon" }
 pedestal_orbit_ecs = { path = "mixins/pedestal_orbit/ecs" }

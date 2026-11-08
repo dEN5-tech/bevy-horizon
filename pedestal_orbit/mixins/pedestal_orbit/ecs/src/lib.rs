@@ -1,5 +1,15 @@
-use bevy_horizon::prelude::*;
-use serde::{Deserialize, Serialize};
+pub mod bridge;
+pub mod components;
+pub mod events;
+pub mod plugin;
+pub mod resources;
+
+pub use bevy_ecs::prelude::*;
+pub use bridge::*;
+pub use components::*;
+pub use events::*;
+pub use plugin::*;
+pub use resources::*;
 
 pub const BLOCKS: [(&str, &str); 5] = [
     ("minecraft:diamond_block", "Diamond Block"),
@@ -21,7 +31,7 @@ pub const CORNERS: [(&str, &str); 4] = [
 ];
 
 /// Configuration settings for the Pedestal Orbit mod.
-#[derive(Clone, Copy, Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub struct PedestalSettings {
     pub enabled: bool,
     pub block_idx: usize,
@@ -103,7 +113,7 @@ impl PedestalSettings {
 }
 
 /// Metadata describing an active living mob bound to orbit the pedestal.
-#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq)]
 pub struct BoundMobState {
     pub entity_id: u32,
     pub kind: String,
