@@ -29,6 +29,8 @@ fn pedestal_orbit_player_tick(game: &mut crate::game::Game<'_>) {
         match cmd {
             m::OutboxCommand::TeleportMob { entity_id, pos, .. } => {
                 let _ = game.native_teleport_mob(player.dimension, entity_id, pos);
+                // Orbit flame trail
+                game.native_flame_particle([pos[0], pos[1], pos[2]], false);
             }
             m::OutboxCommand::PlaceBlock { pos, block_id, .. } => {
                 game.native_flame_particle([pos[0] as f64 + 0.5, pos[1] as f64 + 1.2, pos[2] as f64 + 0.5], true);
@@ -45,6 +47,16 @@ fn pedestal_orbit_player_tick(game: &mut crate::game::Game<'_>) {
             m::OutboxCommand::Chat { message } => {
                 game.native_chat(&message);
             }
+        }
+    }
+
+    // Illuminate active pedestal with glowing soul flame beacon particles
+    if let Some(ped_pos) = m::host_bridge::active_pedestal() {
+        if game.native_clock().is_some_and(|c| c.game_time % 10 == 0) {
+            game.native_flame_particle(
+                [ped_pos[0] as f64 + 0.5, ped_pos[1] as f64 + 1.15, ped_pos[2] as f64 + 0.5],
+                true,
+            );
         }
     }
 }

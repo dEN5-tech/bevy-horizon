@@ -145,9 +145,8 @@ pub mod host_bridge {
             );
 
             if let Some(bound) = kernel.bound_mob() {
-                if let Some((pos, hp, max_hp)) = live_mob {
-                    kernel.bridge.ingest_mob(bound.entity_id, &bound.kind, pos, hp, max_hp);
-                }
+                let (pos, hp, max_hp) = live_mob.unwrap_or((bound.last_pos, 20.0, 20.0));
+                kernel.bridge.ingest_mob(bound.entity_id, &bound.kind, pos, hp, max_hp);
             }
 
             kernel.step_frame(0.05);
