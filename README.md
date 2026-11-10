@@ -158,6 +158,7 @@ fn my_mod_player_tick(game: &mut crate::game::Game<'_>) {
 
 ---
 
+
 ## 🔮 Example: Pedestal Orbit Mod
 
 The included reference mod [`pedestal_orbit`](./pedestal_orbit) demonstrates how to build an interactive RPG totem mechanic:
